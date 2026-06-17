@@ -686,7 +686,6 @@ vcz_variant_encoder_write_format_fields(const vcz_variant_encoder_t *self,
         buf[offset - 1] = '\t';
 
         for (sample = 0; sample < num_samples; sample++) {
-            if (!gt_missing) {
                 offset = vcz_variant_encoder_write_sample_gt(
                     self, variant, sample, buf, buflen, offset);
                 if (offset < 0) {
@@ -696,7 +695,6 @@ vcz_variant_encoder_write_format_fields(const vcz_variant_encoder_t *self,
                 if (offset < 0) {
                     goto out;
                 }
-            }
             for (j = 0; j < self->num_format_fields; j++) {
                 if (!missing[j]) {
                     field = self->format_fields[j];
